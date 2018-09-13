@@ -3,8 +3,8 @@
 20 rem print "generated with spritemate"
 30 poke 53280,0:poke 53281,0
 31 p1=0:p2=0:mx=180:my=200
-32 up=5:do=-5
-35 v=53248:xp = 180:yp = 200:xd = up:yd = 5:xo = 0:ly = 80:ry=80
+32 up=10:do=-10
+35 v=53248:xp = 180:yp = 200:xd = up:yd = 5:xo = 0:ly = 120:ry=120
 36 poke v+16,0
 40 poke 53285,8: rem multicolor 1
 50 poke 53286,6: rem multicolor 2
@@ -16,43 +16,44 @@
 90 poke 53287,1: rem color = 1
 100 poke 2040,200: rem pointer
 110 poke 53248, xp: rem x pos
-120 poke 53249, yp: rem y pos
-130 poke 53276, 0: rem multicolor
-140 poke 53277, 0: rem width
-150 poke 53271, 0: rem height
+111 poke 53249, yp: rem y pos
+112 poke 53276, 0: rem multicolor
+113 poke 53277, 0: rem width
+114 poke 53271, 0: rem height
 
-160 poke v+16,4
+115 poke v+16,4
 
-189 poke 2041,201: rem pointer left paddle
-190 poke 53288, 6: rem color = 2
-110 poke 53250, 16: rem x pos
-120 poke 53251, ly: rem y pos
+120 poke 2041,201: rem pointer left paddle
+121 poke 53288, 6: rem color = 2
+122 poke 53250, 16: rem x pos
+123 poke 53251, ly: rem y pos
 
 
-210 rem poke v+16,4
-289 poke 2042,202: rem pointer right paddle
-290 poke 53289, 8: rem color = 2
-210 poke 53252, 72: rem x pos
-220 poke 53253, ry: rem y pos
+130 rem poke v+16,4
+131 poke 2042,202: rem pointer right paddle
+132 poke 53289, 8: rem color = 2
+133 poke 53252, 72: rem x pos
+134 poke 53253, ry: rem y pos
 
 
 280 print chr$(147);chr$(158);chr$(17);"player 1:";p1;"          player 2:";p2
 281 print"":for c = 0 to 39: print chr$(197);: next c
 282 for c = 0 to 8: printchr$(13): next c
 283 for c = 0 to 39: print chr$(197);: next c
+284 rem poke v+16,4
 
 
 290 xp = xp + xd:yp = yp + yd
 291 ce=yp+10
 
-300 j=peek(56320):k=peek(56321): rem if j=127 then 300
-305 print peek(56321)" "k
+295 j=peek(56320):k=peek(56321): rem if j=127 then 300
+300 rem print peek(56321)" "k
 301 rem if j=123 then print"hello1";
 302 rem if j=119 then print"hello2";
 303 if j=125 then 700; rem down
 304 if j=118 then 750; rem up
 305 if k=253 then 800; rem down
-306 if k=254 then 850; rem up
+306 if k=254 then 810; rem up
 307 rem if j=111 then print"hello6";
 308 rem if j=123 then print"hello7";
 
@@ -64,15 +65,17 @@
 
 358 rem nothing
 360 yb=ly+21:
+362 rb=ry+21:
 361 rem 
-365 if (xp>68 and xo=1 and xd>0) then 600;
+365 rem if (xp>68 and xo=1 and xd>0) then 600;
 366 rem
 367 if xp>=254 and xd>0 and xo=0 then 610;
 368 if xp<0 and xd<1 and xo=1 then 620;
-369 rem print " xp"xp" xo"xo" ly"ly" ce"ce" yb"yb
 
 370 if xp<17 and xo=0 and ly<=ce and yb >=ce then 500;
+371 if xp>75 and xo=1 and ly<=ce and rb >=ce then 600;
 374 if xp<9 and xo=0 then 910;
+375 if xp>75 and xo=1 then 920;
 
 
 377 rem nothing
@@ -88,6 +91,11 @@
 501 xp = xp + xd
 502 rem print "here"
 505 goto 358
+
+
+550 yd = up
+551 yp = yp + yd
+555 goto 358
 
 600 xd = do
 601 xp = xp + xd
@@ -106,9 +114,6 @@
 623 rem print"420"
 625 goto 377
 
-550 yd = up
-551 yp = yp + yd
-555 goto 358
 
 650 yd = do
 651 yp = yp + yd
@@ -133,18 +138,29 @@
 806 ry = 208: goto 310
 
 
-850 ry = ry + (do*2)
-851 if ry<76 then 856;
-855 goto 310
-856 ry = 76:goto 310
+810 ry = ry + (do*2)
+811 if ry<76 then 856;
+815 goto 310
+816 ry = 76:goto 310
+
+
 
 900 print "hello"
 
-910 p2=p2+1
+910 p2=p2+1: rem increment player 2 score
 911 xp=mx:yp=my
 912 poke 53280,1:poke 53281,1
 913 poke 53280,0:poke 53281,0
+914 yp = (rnd(1)*160) + 20
 915 goto 280
+
+920 p1=p1+1: rem increment player 1 score
+921 xp=mx:yp=my:xo=0
+922 poke 53280,1:poke 53281,1
+923 poke 53280,0:poke 53281,0
+924 poke v+16,4
+925 yp = int(rnd(1)*160) + 20
+930 goto 280
 
 1000 :: rem sprite 1 / singlecolor / color: 2
 1010 data 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

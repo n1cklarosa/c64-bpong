@@ -1,4 +1,4 @@
-5 rem version 0.9
+5 rem version 1.0
 10 print chr$(147)
 20 rem print "generated with spritemate"
 30 poke 53280,0:poke 53281,0

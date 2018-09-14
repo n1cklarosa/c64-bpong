@@ -1,9 +1,9 @@
-5 rem version 1.0
+5 rem version 1.1
 10 print chr$(147)
 20 rem print "generated with spritemate"
 30 poke 53280,0:poke 53281,0
 31 p1=0:p2=0:mx=180:my=200
-32 up=10:do=-10
+32 up=8:do=-8
 35 v=53248:xp = 180:yp = 200:xd = up:yd = 5:xo = 0:ly = 120:ry=120
 36 poke v+16,0
 40 poke 53285,8: rem multicolor 1
@@ -41,17 +41,17 @@
 282 for c = 0 to 8: printchr$(13): next c
 283 for c = 0 to 39: print chr$(197);: next c
 284 rem poke v+16,4
-
+ 
 
 290 xp = xp + xd:yp = yp + yd
-291 ce=yp+10
+291 ce=yp+15
 
 295 j=peek(56320):k=peek(56321): rem if j=127 then 300
 300 rem print peek(56321)" "k
 301 rem if j=123 then print"hello1";
 302 rem if j=119 then print"hello2";
 303 if j=125 then 700; rem down
-304 if j=118 then 750; rem up
+304 if j=126 then 750; rem up
 305 if k=253 then 800; rem down
 306 if k=254 then 810; rem up
 307 rem if j=111 then print"hello6";
@@ -67,14 +67,14 @@
 360 yb=ly+21:
 362 rb=ry+21:
 361 rem 
-365 rem if (xp>68 and xo=1 and xd>0) then 600;
+365 rem if (xp>62 and xo=1 and xd>0) then 600;
 366 rem
 367 if xp>=254 and xd>0 and xo=0 then 610;
 368 if xp<0 and xd<1 and xo=1 then 620;
 
 370 if xp<17 and xo=0 and ly<=ce and yb >=ce then 500;
-371 if xp>75 and xo=1 and ly<=ce and rb >=ce then 600;
-374 if xp<9 and xo=0 then 910;
+371 if xp>64 and xo=1 and ry<=ce and rb >=ce then 600;
+374 if xp<10 and xo=0 then 910;
 375 if xp>75 and xo=1 then 920;
 
 
@@ -139,7 +139,7 @@
 
 
 810 ry = ry + (do*2)
-811 if ry<76 then 856;
+811 if ry<76 then 816;
 815 goto 310
 816 ry = 76:goto 310
 

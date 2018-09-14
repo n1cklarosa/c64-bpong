@@ -1,7 +1,16 @@
 5 rem version 1.1
-10 print chr$(147)
-20 rem print "generated with spritemate"
-30 poke 53280,0:poke 53281,0
+10 print chr$(147): 
+11 poke 53280,0: poke 53281,0:poke 646,1
+12 print "how many players ? 1 / 2"
+13 get a$: if a$ = "" then 13:
+14 a=val(a$):
+15 rem print "here"a$
+18 if a$<>"1" and a$<>"2" then 13;
+19 if a$="2" then 30;
+20 if a$="1" then 31;
+
+
+30 rem print "here"
 31 p1=0:p2=0:mx=180:my=200
 32 up=8:do=-8
 35 v=53248:xp = 180:yp = 200:xd = up:yd = 5:xo = 0:ly = 120:ry=120
@@ -72,9 +81,9 @@
 367 if xp>=254 and xd>0 and xo=0 then 610;
 368 if xp<0 and xd<1 and xo=1 then 620;
 
-370 if xp<17 and xo=0 and ly<=ce and yb >=ce then 500;
-371 if xp>64 and xo=1 and ry<=ce and rb >=ce then 600;
-374 if xp<10 and xo=0 then 910;
+370 if xp<16 and xo=0 and ly<=ce and yb >=ce then 500;
+371 if xp>70 and xo=1 and ry<=ce and rb >=ce then 600;
+374 if xp<8 and xo=0 then 910;
 375 if xp>75 and xo=1 then 920;
 
 
@@ -84,8 +93,13 @@
 380 rem nothing 
 390 poke 53248, xp
 395 poke 53249, yp
-396 poke 53251, ly: poke 53253, ry: rem move paddle
-400 goto 290
+396 poke 53251, ly: 
+397 if a$="2" then 401;
+398 if a$="1" then 399;
+399 ry = yp:
+400 rem goto 290
+401 poke 53253, ry:
+405 goto 290
 
 500 xd = up
 501 xp = xp + xd

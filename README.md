@@ -21,7 +21,9 @@ load"bpong",8
 ### Version Info
 
 1.1 Fixed Joystick bug (was using up-right rather than directly up). Tweaked my take on collision detection
+
 1.0 Second player works
+
 0.9 It is currently very crude and runs quite slow in basic. Im sure the code could be more efficient.
 
 ### todos

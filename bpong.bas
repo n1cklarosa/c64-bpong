@@ -1,4 +1,4 @@
-5 rem version 1.1
+tmp5 rem version 1.1
 10 print chr$(147): 
 11 poke 53280,0: poke 53281,0:poke 646,1
 12 print "how many players ? 1 / 2"

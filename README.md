@@ -1,5 +1,5 @@
 
-# Commodore 64 Pong in basic
+# Commodore 64 Pong in basic + assembler
 
 I have been teaching myself to code for the c64. To begin with I have created a pong clone game in basic, and have recently started moving it over to assembler. I am completely new to coding for the C64 and welcome any feedback you have. You can find me on twitter [@commodore_now](https://twitter.com/commodore_now/) 
 
@@ -7,9 +7,11 @@ I have been teaching myself to code for the c64. To begin with I have created a 
 
 To run the basic version. 
 
-Option 1. simply paste the .bas file contents into the VICE emulator. I will update this readme with instructions for a real C64 when I have overcome and issue with saving .d64 files to git. (the .d64 file in the git will work on vice, but an SD2IEC PM me for a link that works)
+#### Option 1. 
+simply paste the .bas file contents into the VICE emulator. I will update this readme with instructions for a real C64 when I have overcome and issue with saving .d64 files to git. (the .d64 file in the git will work on vice, but an SD2IEC PM me for a link that works)
 
-Option 2. Mount the pongdisk.d64 file in vice, and load with the following command
+#### Option 2. 
+Mount the pongdisk.d64 file in vice, and load with the following command
 ```
 load"bpong.prg",8,1
 ```
@@ -17,9 +19,14 @@ then type run when presented with "READY"
 
 To run the assbmler version. 
 
-Option 1. To compile the assembler version, use the [ACME compiler](https://github.com/meonwax/acme) on apong.asm, it will create apong.prg in the build folder. Or load apong.prg from the repo.
+#### Option 1. 
+To compile the assembler version, use the [ACME compiler](https://github.com/meonwax/acme) to compile apong.asm, it will create apong.prg in the build folder. 
 
-Option 2. Mount the pongdisk.d64 file in vice, and load with the following
+#### Option 2. 
+load apong.prg from the repo.
+
+#### Option 3. 
+Mount the pongdisk.d64 file in vice, and load with the following
 ```
 load"bpong.prg",8,1
 ```

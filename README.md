@@ -28,7 +28,7 @@ load apong.prg from the repo.
 #### Option 3. 
 Mount the pongdisk.d64 file in vice, and load with the following
 ```
-load"bpong.prg",8,1
+load"apong.prg",8,1
 ```
 then type run when presented with "READY" 
 

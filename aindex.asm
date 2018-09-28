@@ -239,10 +239,8 @@ move_ball_right2
 						stx XDIR
 						jmp move_ball_right	
 move_ball_right 
-						ldx SP2X
-						inx
-						inx
-						stx SP2X
+						inc SP2X
+						inc SP2X
 						jmp joystick_loop
 
 test_rebound
@@ -268,10 +266,7 @@ test_left_to_right
 						jmp test_left_to_right_3
 
 move_ball_left
-						ldx SP2X
-						dex
-						dex
-						stx SP2X
+						inc SP2X
 						jmp joystick_loop
 
 test_rebound_2 ; if on right side of screen
@@ -311,36 +306,32 @@ cross_right_to_left
 						lda #$FF
 						sta SP2X
 						jmp move_ball_left2
+
 cross_left_to_right
 						lda #$06
 						sta MSBX
 						lda #$00
 						sta SP2X
 						jmp move_ball_right2
+
 check_y  ;  Y AXIS BALL TEST
 					    ldy SP2Y
 						cpy #$E6
 						beq move_ball_up2
-
 			 			ldy SP2Y
 						cpy #$3C
 						beq move_ball_down2
-
-
 						lda #$00
 						cmp YDIR
 						beq move_ball_up
-
 						lda #$01
 						cmp YDIR
 						beq move_ball_down
 						jmp nextloop 
 move_ball_down  
-						ldy SP2Y
-						iny
-						iny
-						sty SP2Y
-						;sty SP1Y
+						inc SP2Y
+						inc SP2Y
+						;sty SP1Y ; to keep player 2 alive
 						jmp nextloop 
 
 move_ball_down2
@@ -350,10 +341,8 @@ move_ball_down2
 	
 
 move_ball_up  
-						ldy SP2Y
-						dey
-						dey
-						sty SP2Y
+						dec SP2Y
+						dec SP2Y
 						;sty SP1Y
 						jmp nextloop 
 
@@ -361,9 +350,6 @@ move_ball_up2
 						lda #$00
 						sta YDIR
 						jmp move_ball_up 
-	
-
-
 
 loop_text 				txa
 				        jsr $FFD2
@@ -401,7 +387,6 @@ load_sprite2
 
 
 line1            !scr "player 1                     player 2    "
-line2            !scr "    actraiser in 2013 presents...        "
 
 sprite_1
 	!byte $fc,$00,$00,$fc,$00,$00,$fc,$00
